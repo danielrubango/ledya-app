@@ -14,7 +14,7 @@
 	</style>
 </head>
 <body>
-	<h1>Reservation no {{ $reservation->id }}</h1>
+	{{-- <h1>Reservation no {{ $reservation->id }}</h1> --}}
 
 	<table>
 		<thead>
