@@ -20,12 +20,12 @@ class DashboardController extends Controller
         // $rooms = $this->rooms->all()->load('reservation.client');
         // return $rooms;
 
-        $reservation = \App\Reservation::active()
+        $reservations = \App\Reservation::active()
             ->orderBy('checkout')
             ->get();
 
             // return $reservations;
 
-        return view('admin.dashboard.index', compact('reservation'));
+        return view('admin.dashboard.index', compact('reservations'));
     }
 }
