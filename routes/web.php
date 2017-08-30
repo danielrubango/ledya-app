@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('admin.dashboard.index');
 })->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
