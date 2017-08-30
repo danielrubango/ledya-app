@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <label for="room">Chambres disponibles</label>
                     <select required class="form-control" name="room_id">
-                        <option>Selectionner une chambre</option>
+                        <option selected disabled>Selectionner une chambre</option>
 
                         @foreach($rooms as $room)
                             <option value="{{ $room->id }}">

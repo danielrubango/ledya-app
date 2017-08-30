@@ -98,7 +98,7 @@ class ReservationsController extends Controller
         $checkin = Carbon::createFromFormat('d/m/Y' ,$request->checkin);
         $checkout = Carbon::createFromFormat('d/m/Y' ,$request->checkout);
 
-        $total_price = calculateTotalPrice($checkin, $checkout, $room->type->base_price);
+        $total_price = $this->calculateTotalPrice($checkin, $checkout, $room->type->base_price);
 
         $room->reservation()->create([
             "total_price" => $total_price,

@@ -28,6 +28,8 @@
                 <div class="form-group">
                     <label for="code">Categorie chambre</label>
                     <select required class="form-control" name="room_type_id">
+                        <option selected disabled>Selectionner une categorie</option>
+                        
                         @foreach($room_types as $room_type)
                             <option {{ ( (string) $room_type->id == ( (string) request()->category) ?? null ) ? "selected":"" }} value="{{ $room_type->id }}">{{ $room_type->name }} - ${{ $room_type->base_price }}</option>
                         @endforeach

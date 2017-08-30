@@ -14,6 +14,8 @@
                 <div class="form-group">
                     <label for="room">Chambres disponibles</label>
                     <select required class="form-control" name="room_id">
+                        <option selected disabled>Selectionner une chambre</option>
+
                         @foreach($rooms as $room)
                             <option {{ $room->id != $reservation->room->id ? "":"selected" }} value="{{ $room->id }}">
                                 {{ $room->type->name }} - {{ $room->code }} <strong>{{ $room->type->base_price }}/jour</strong>
@@ -25,6 +27,8 @@
                 <div class="form-group">
                     <label for="client_id">Choix du client</label>
                     <select required class="form-control" name="client_id">
+                        <option selected disabled>Selectionner un client</option>
+
                         @foreach($clients as $client)
                             <option {{ ($client->id != $reservation->client->id) ?:"selected" }} value="{{ $client->id }}">{{ $client->profile->first_name . ' ' . $client->profile->first_name }}</option>
                         @endforeach

@@ -18,7 +18,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h2>Panneau de contrôle</h2>
+            Panneau de contrôle
         </div>
 
         <div class="card-block">
@@ -26,21 +26,21 @@
                 <table class="table table-responsive table-hover table-outline mb-0">
                     <thead class="thead-default">
                         <tr>
-                            <th>Chambres</th>
+                            <th># Chambres</th>
 
-                            <th class="text-center">
-                                <i class="icon-people"></i>
+                            <th>
+                                <i class="icon-people"></i> Clients
                             </th>
 
-                            <th>Arrivée</th>
-                            <th>Jours</th>
+                            <th class="text-center">Arrivée</th>
+                            <th class="text-center">Jours</th>
 
                             <th>Total $</th>
                             <th>Deposit $</th>
                             <th>Cash $</th>
                             <th>Crédit $</th>
                             
-                            <th>Actions</th>
+                            <th class="text-center">Actions</th>
                         </tr>
                     </thead>
 
@@ -53,18 +53,22 @@
 
                                 <td>
                                     {{ $reservation->client->profile->first_name }}
+
+                                    <div class="small text-muted">
+                                        <span>New</span>| Registered: Jan 1, 2015
+                                    </div>
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     {{ $reservation->present()->dateIn }}
                                 </td>
                                 
-                                <td>
+                                <td class="text-center">
                                     {{ $reservation->present()->days }}
                                 </td>
 
                                 <td>
-                                    {{ $reservation->present()->days }}
+                                    {{ $reservation->present()->total_price }}
                                 </td>
                                 
                                 <td class="text-center">
@@ -72,14 +76,14 @@
                                 </td>
 
                                 <td class="text-right">
-                                    {{ $reservation->payed or '0' }} $
+                                    {{ $reservation->payed or '0' }}
                                 </td>
 
                                 <td class="text-right">
-                                    {{ $reservation->total_price - $reservation->payed }} $
+                                    {{ $reservation->total_price - $reservation->payed }}
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     <a href="{{ route('reservations.show', $reservation->id) }}" class="btn btn-info btn-sm mr-1">
                                         <i class="icon-doc"></i>
                                     </a>
