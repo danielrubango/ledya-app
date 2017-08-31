@@ -44,7 +44,7 @@ $factory->define(App\Room::class, function (Faker\Generator $faker) {
     $room_type = factory(App\RoomType::class)->create();
 
     return [
-        'code' => $faker->name,
+        'code' => $faker->lastname,
         'room_type_id' => $room_type->id,
         'free' => true,
         'max_occupancy' => $faker->numberBetween(1, 5),

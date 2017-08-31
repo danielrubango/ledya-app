@@ -56,12 +56,17 @@ class ReservationsController extends Controller
 
         ]);
 
+        $checkin = Carbon::createFromFormat('d/m/Y' ,$request->checkin);
+        $checkout = Carbon::createFromFormat('d/m/Y' ,$request->checkout);
+
+        $total_price = $this->calculateTotalPrice($checkin, $checkout, $room->type->base_price);
+
         $reservation->create([
-            "total_price" => "1000",
+            "total_price" => $total_price,
             "room_id" => $request->room_id,
             "client_id" => $request->client_id,
-            "checkin" => Carbon::createFromFormat('d/m/Y' ,$request->checkin),
-            "checkout" => Carbon::createFromFormat('d/m/Y' ,$request->checkout),
+            "checkin" => $checkin,
+            "checkout" => $checkout,
             "description" => $request->description
         ]);
 
