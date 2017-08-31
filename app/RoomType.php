@@ -22,6 +22,16 @@ class RoomType extends Model
 
     public function rooms()
     {
-        return $this->hasMany(Room::class, 'room_type_id');
+        $today = \Carbon\Carbon::today();
+
+        return $this->hasMany(Room::class, 'room_type_id')
+            ->with('reservation')
+            ->leftJoin("reservations", function ($join) use ($today) {
+                $join->on('reservations.room_id', '=', 'rooms.id')
+                    ->where('reservations.checkin', '<=', $today)
+                    ->where('reservations.checkout', '>', $today);
+            })
+            ->groupBy('rooms.id')
+            ->selectRaw('rooms.*, count(reservations.id) as countable');
     }
 }

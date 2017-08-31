@@ -22,15 +22,16 @@
                         @endforeach
                     </select>
                 </div> --}}
+                <div>
+                    <div class="form-group">
+                        <label for="max_occupancy">Date entree</label>
+                        <input name="checkin" required class="form-control" data-date-format="dd/mm/yyyy" data-provide="datepicker" value="{{ \Carbon\Carbon::today()->format('d/m/Y') }}">
+                    </div>
 
-                <div class="form-group">
-                    <label for="max_occupancy">Date entree</label>
-                    <input name="checkin" required class="form-control datepicker" data-date-format="dd/mm/yyyy" data-provide="datepicker">
-                </div>
-
-                <div class="form-group">
-                    <label for="max_occupancy">Date sortie</label>
-                    <input name="checkout" required class="form-control datepicker" data-date-format="dd/mm/yyyy" data-provide="datepicker">
+                    <div class="form-group">
+                        <label for="max_occupancy">Date sortie</label>
+                        <input name="checkout" required class="form-control datepicker" data-date-format="dd/mm/yyyy" data-provide="datepicker">
+                    </div>
                 </div>
 
                 <div class="form-group">

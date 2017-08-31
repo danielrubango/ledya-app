@@ -56,7 +56,7 @@
 
                         <div class="d-flex justify-content-between">
                             <h5 class="mb-1">
-                                @if($room->free())
+                                @if(empty($room->free()))
                                     {{ $room->code }} <span class="badge badge-success }}">
                                         Libre
                                     </span>
@@ -68,7 +68,7 @@
                             </h5>
 
                             <div class="btn-group float-right">
-                                @if($room->free())
+                                @if(empty($room->free()))
                                     <a href="{{ route('special.reservation.create', $room->id) }}" class="btn btn-success mr-2">
                                         Ajouter un occupant
                                     </a>

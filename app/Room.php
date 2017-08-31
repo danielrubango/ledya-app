@@ -34,6 +34,12 @@ class Room extends Model
 			->withoutGlobalScopes();
 	}
 
+	public function hasNoActiveReservation()
+	{
+		return $this->hasMany(Reservation::class)
+			->withoutGlobalScopes();
+	}
+
 	public function getPriceAttribute()
 	{
 		return $this->type->base_price;
@@ -94,16 +100,6 @@ class Room extends Model
 
 	public function free()
 	{
-		return !! $this->whereId($this->id)
-			->where(function ($query) {
-				$query->whereDoesntHave('reservation', function ($query) {
-					$query->where('checkout', '>', \Carbon\Carbon::today());
-					// $query->where('checkin', '<=', \Carbon\Carbon::today());
-				});
-				
-				$query->orWhere(function ($query) {
-					$query->doesntHave('reservation');
-				});				
-			})->with('reservation')->get()->count();
+		return !! $this->countable != 0;
 	}
 }

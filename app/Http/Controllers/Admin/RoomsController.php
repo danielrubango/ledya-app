@@ -16,10 +16,8 @@ class RoomsController extends Controller
      */
     public function index()
     {
-        $room_categories = RoomType::with('rooms')->withCount('rooms')->get();
+        $room_categories = RoomType::with('rooms.hasNoActiveReservation')->withCount('rooms')->get();
 
-        // $room_categories = RoomType::with('rooms')->withCount('rooms')->first();
-        
         return view('admin.rooms.index', compact('room_categories'));
     }
 
